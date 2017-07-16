@@ -1,0 +1,41 @@
+{
+  "name": "waker-cli",
+  "version": "0.0.1",
+  "description": "Waker-cli is command tool form to manage waker servers",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixelsandcode/waker-cli.git"
+  },
+  "keywords": [
+    "waker",
+    "cli"
+  ],
+  "author": "Reza Gholamzadeh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pixelsandcode/waker-cli/issues"
+  },
+  "bin": {
+    "waker": "main.js"
+  },
+  "homepage": "https://github.com/pixelsandcode/waker-cli#readme",
+  "dependencies": {
+    "available-versions": "^0.12.4",
+    "bluebird": "^3.5.0",
+    "chalk": "^2.0.1",
+    "clear": "0.0.1",
+    "figlet": "^1.2.0",
+    "gulp": "^3.9.1",
+    "gulp-exec": "^2.1.3",
+    "gulp-template": "^4.0.0",
+    "inquirer": "^3.2.0",
+    "latest-version": "^3.1.0",
+    "lodash": "^4.17.4",
+    "shelljs": "^0.7.8",
+    "yargs": "^8.0.2"
+  }
+}
