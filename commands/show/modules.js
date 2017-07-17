@@ -16,7 +16,7 @@ const privates = {
   getModuleStatus () {
     const root = helpers.getWakerRoot()
     const whiteSpace = '                    '
-    const configPath = `${root}/core/config/waker`
+    const configPath = `${root}/core/config/waker.js`
     if (!fs.existsSync(configPath))
       return console.log('there is no waker.js file')
     const config = require(configPath)
