@@ -10,8 +10,8 @@ exports.builder = {
   }
 }
 exports.handler = function (argv) {
-  const path = helpers.get_absolute_path(argv.path)
-  privates.get_version(path)
+  const path = helpers.getAbsolutePath(argv.path)
+  privates.getVersion(path)
     .then(version => {
       console.log(version)
     })
@@ -21,7 +21,7 @@ exports.handler = function (argv) {
 }
 
 const privates = {
-  get_version (path) {
+  getVersion (path) {
     return new Promise((resolve, reject) => {
       const pkgPath = `${path}/core/node_modules/waker/package.json`
       if(!fs.existsSync(pkgPath))

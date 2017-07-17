@@ -24,11 +24,11 @@ exports.builder = {
   }
 }
 exports.handler = function (argv) {
-  const path = helpers.get_absolute_path(argv.path)
+  const path = helpers.getAbsolutePath(argv.path)
   const version =
-    privates.waker_version(argv.version ? argv.version : 'latest')
+    privates.wakerVersion(argv.version ? argv.version : 'latest')
       .then(version => {
-        privates.check_version(version)
+        privates.checkVersion(version)
           .then(valid => {
             if(!valid) throw new Error(`waker version is not valid: ${version}`)
             clear()
@@ -45,7 +45,7 @@ exports.handler = function (argv) {
           .then(() => {
             console.log("waker skeleton initiation finished!")
             console.log("installing dependencies ...")
-            return privates.install_npms(path)
+            return privates.installDependencies(path)
           })
           .then(() => {
             console.log("dependencies are installed successfully. enjoy! :)")
@@ -198,9 +198,9 @@ const privates = {
     result.interpolate_regex = '<%=([\\s\\S]+?)%>'
     result.scheme = 'waker' //should be deleted after updating waker
     result.version = version
-    privates.touch_path(path)
+    privates.touchPath(path)
     console.log(`installing waker@${version} ...`)
-    return privates.install_waker(path, version)
+    return privates.installWaker(path, version)
       .then(() => {
         console.log('waker installed successfully!')
         console.log('initiating waker skeleton ...')
@@ -217,7 +217,7 @@ const privates = {
         })
     })
   },
-  install_npms (path = '.') {
+  installDependencies (path = '.') {
     return new Promise((resolve, reject) => {
       shell.exec(`cd ${path}/core && npm install`, (code, stdout, stderr) => {
         if (code != '0')
@@ -226,7 +226,7 @@ const privates = {
       })
     })
   },
-  install_waker (path, version) {
+  installWaker (path, version) {
     return new Promise((resolve, reject) => {
       const waker = version ? `waker@${version}` : 'waker'
       shell.exec(`cd ${path}/core && npm install ${waker}`, (code, stdout, stderr) => {
@@ -236,11 +236,11 @@ const privates = {
       })
     })
   },
-  waker_version (version) {
+  wakerVersion (version) {
     if (version != 'latest') return Promise.resolve(version)
     return latestVersion('waker')
   },
-  check_version (version) {
+  checkVersion (version) {
     return available({
       name: 'waker'
     }).then(result => {
@@ -248,7 +248,7 @@ const privates = {
       return true
     })
   },
-  touch_path (path) {
+  touchPath (path) {
     if (!fs.existsSync(path)) {
       fs.mkdirSync(path)
       fs.mkdirSync(`${path}/core`)

@@ -1,7 +1,17 @@
 #!/usr/bin/env node
 
-let argv = require('yargs')
+const argv = require('yargs')
   .commandDir('commands')
-  .demandCommand(1)
+  .options({
+    version: {
+      alias: 'v',
+      describe: 'show version of waker-cli'
+    }
+  })
   .help()
   .argv
+
+if(argv.version) {
+  const pkg = require('./package.json')
+  console.log(pkg.version)
+}
