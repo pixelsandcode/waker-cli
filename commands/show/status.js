@@ -26,6 +26,7 @@ const privates = {
     console.log(chalk.bold.white(`Plugin${whiteSpace.substr(0, whiteSpace.length - 5)}Version${whiteSpace.substr(0, whiteSpace.length - 6)}Status`))
     console.log('-------------------------------------------------')
     _.each(config.plugins, (pluginConfig, name) => {
+      if(!pluginsManifest[name]) return
       const status = (pluginConfig.enabled) ? chalk.bold.green('enable') : chalk.bold.red('disable')
       const version = chalk.bold.yellow(`${pluginsManifest[name]}${whiteSpace.substr(0, whiteSpace.length - pluginsManifest[name].length)}`)
       name = chalk.bold.yellow(`${name}${whiteSpace.substr(0, whiteSpace.length - name.length)}`)

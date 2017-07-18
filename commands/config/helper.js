@@ -36,9 +36,14 @@ const privates = {
     const promises = []
     _.each(config, (value, name) => {
       if (typeof value == 'object')
-        promises.push(() => {
-          return privates.askConfig(config[name], name, `${(parentPath)?`${parentPath}.`:''}${name}`)
-        })
+        if(_.isArray(value))
+          promises.push(() => {
+            return privates.askArray(name, value, parentPath)
+          })
+        else
+          promises.push(() => {
+            return privates.askConfig(config[name], name, `${(parentPath)?`${parentPath}.`:''}${name}`)
+          })
       else
         promises.push(() => {
           return privates.ask(name, value, parentPath)
@@ -68,6 +73,17 @@ const privates = {
         if(input == 'true') return Promise.resolve(true)
         if(input == 'false') return Promise.resolve(false)
         return Promise.resolve(input)
+      }
+    })
+  },
+  askArray (name, value, parent) {
+    return inquirer.prompt({
+      name: name,
+      type: 'input',
+      message: `${(parent)?`${parent}.`:''}${name} [array separated by ',']`,
+      default: _.toString(value),
+      filter: (input) => {
+        return Promise.resolve(_.split(input, ','))
       }
     })
   }

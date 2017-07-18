@@ -63,6 +63,7 @@ const helpers = {
     const root = helpers.getWakerRoot()
     const pluginsManifestPath = `${root}/core/node_modules/waker/src/plugins.manifest.json`
     const pluginsManifest = require(pluginsManifestPath)
+    if(name == 'bell') name = 'hapi-notification-server' //this should be removed when hapi-notification-server renamed to bell
     return helpers.installNpm(name, pluginsManifest[name])
   },
   installHelper (name) {
