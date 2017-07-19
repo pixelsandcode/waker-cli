@@ -9,7 +9,9 @@ exports.command = 'plugin'
 exports.describe = 'config a plugin on server'
 exports.builder = {
   name: {
-    alias: 'n'
+    alias: 'n',
+    describe: 'name of plugin to config',
+    demandOption: true
   }
 }
 exports.handler = function (argv) {

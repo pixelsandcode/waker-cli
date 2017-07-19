@@ -5,7 +5,9 @@ exports.command = 'plugin'
 exports.describe = 'disable a plugin on server'
 exports.builder = {
   name: {
-    alias: 'n'
+    alias: 'n',
+    describe: 'name of plugin to disable',
+    demandOption: true
   }
 }
 exports.handler = function (argv) {

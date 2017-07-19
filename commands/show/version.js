@@ -6,7 +6,8 @@ exports.command = 'version'
 exports.describe = 'show waker version of server'
 exports.builder = {
   path: {
-    alias: 'p'
+    alias: 'p',
+    describe: 'path to waker server'
   }
 }
 exports.handler = function (argv) {

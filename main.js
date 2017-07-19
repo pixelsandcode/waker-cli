@@ -5,9 +5,11 @@ const argv = require('yargs')
   .options({
     version: {
       alias: 'v',
-      describe: 'show version of waker-cli'
+      describe: 'show version of waker-cli',
+      global: false
     }
   })
+  .demandOption(['version'])
   .help()
   .argv
 

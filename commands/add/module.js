@@ -6,7 +6,9 @@ exports.command = 'module'
 exports.describe = 'add new module to waker server'
 exports.builder = {
   name: {
-    alias: 'n'
+    alias: 'n',
+    describe: 'name of new module',
+    demandOption: true
   }
 }
 exports.handler = function (argv) {
@@ -27,6 +29,9 @@ exports.handler = function (argv) {
 
 privates = {
   addModule (root, name) {
+    const modulePath = `${root}/modules/${name}`
+    if(fs.existsSync(modulePath))
+      return console.log(`module with name "${name}" is already created, try another name`)
     shell.exec(`cd ${root}/core && gulp api:module:create -n ${name}`, (code, stdout, stderr) => {
       if (code != '0')
         console.log('something went wrong when creating new module')

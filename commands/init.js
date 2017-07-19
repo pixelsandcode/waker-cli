@@ -17,10 +17,12 @@ exports.command = 'init'
 exports.describe = 'create a new server'
 exports.builder = {
   path: {
-    alias: 'p'
+    alias: 'p',
+    describe: 'path to create waker server'
   },
   version: {
-    alias: 'v'
+    alias: 'v',
+    describe: 'version of waker to use'
   }
 }
 exports.handler = function (argv) {

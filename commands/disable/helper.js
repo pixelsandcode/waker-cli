@@ -5,7 +5,9 @@ exports.command = 'helper'
 exports.describe = 'disable a helper on server'
 exports.builder = {
   name: {
-    alias: 'n'
+    alias: 'n',
+    describe: 'name of helper to disable',
+    demandOption: true
   }
 }
 exports.handler = function (argv) {

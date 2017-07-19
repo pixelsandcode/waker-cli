@@ -9,7 +9,9 @@ exports.command = 'helper'
 exports.describe = 'config a helper on server'
 exports.builder = {
   name: {
-    alias: 'n'
+    alias: 'n',
+    describe: 'name of helper to config',
+    demandOption: true
   }
 }
 exports.handler = function (argv) {
