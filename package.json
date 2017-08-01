@@ -1,6 +1,6 @@
 {
   "name": "waker-cli",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Waker-cli is command tool form to manage waker servers",
   "main": "main.js",
   "scripts": {
